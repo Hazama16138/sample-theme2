@@ -11,13 +11,17 @@
 	<main>
 		<?php if (	have_posts() ): ?>
 		<article>
-			<?php the_archive_title( '<h1>', '</h1>' ); ?>
+			<?php
+				echo '<h1>検索キーワード:';
+				echo get_search_query();
+				echo '</h1>';
+			?>
 			<ul>
 				<?php while( have_posts() ): the_post() ;?>
 				<li>
 					<?php
 						$html  = '';
-						$html .= '<a href="' . get_the_permalink() . '">';
+						$html = '<a href="' . get_the_permalink() . '">';
 						$html .= get_the_title();
 						$html .= '</a>';
 						$html .= '<p>' . get_the_excerpt() . '</p>';
